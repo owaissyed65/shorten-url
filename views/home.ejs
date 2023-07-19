@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hello from server</h1>
+    <% if (locals.id) { %>
+     <p>Please visit this link: http:localhost:8001/url/<%=id %></p>
+    <% } %>
+    <form action="/url" method="post">
+        <label for="validateUrl">Enter a link</label>
+        <input type="text" id="validateUrl" name="validateUrl" placeholder="https://google.com">
+        <input type="submit" >
+    </form>
+    <table>
+        <thead>
+            <td>url</td>
+            <td>validateUrl</td>
+            <td>isVisited</td>
+        </thead>
+    <tbody>
+    <% url.forEach(element => { %>
+        <tr>
+            <td><%= element.url %></td>
+            <td><%= element.validateUrl %></td>
+            <td><%= element.isVisited.length %></td>
+        </tr>
+    <% }) %>
+</tbody>
+</table>
+</body>
+</html> 
